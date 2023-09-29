@@ -1,5 +1,23 @@
 # SortPhotos
 
+# Fork Description
+
+This fork of SortPhotos differs from the original in the following ways:
+
+- Added the -l option to hard link photos rather than copy (based on this [pull request](https://github.com/andrewning/sortphotos/pull/145))
+- When a move operation encounters a duplicate file, the original is deleted
+- Added pre-built Docker image
+
+## Docker support
+
+Sortphotos can now be run through Docker. This eliminates the need for any dependencies on the source system. 
+
+The following example will recursively copy all photos from /path/to/Pictures/Incoming to /path/to/Pictures
+
+```
+docker run -v "/path/to/Pictures:/pics" ghcr.io/wbevans/sortphotos -r /pics/Incoming /pics
+```
+
 # Description
 
 SortPhotos is a Python script that organizes photos into folders by date and/or time (year, year/month, year/month/day, or other custom formats).  If you're like me then your growing collection of files are contained in a bunch of folders, some with a date like "Sep 2010", and others with names like "Camping Trip".  SortPhotos takes this collection of folders and files and reorganizes them into a hierarchy of folders by almost any custom date/time format (by default it is by year then month).  It will work with any file, but works best with image and video files that contain EXIF or other metadata formats because that stays with the file even if the files are modified.  The script is also useful for transferring files from your camera into your collection of nicely organized photos.
